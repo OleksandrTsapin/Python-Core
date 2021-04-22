@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width= , initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <a href="/home">&nbsp Дім &nbsp</a>
+    <a href="/electricity">&nbsp Електроенергія &nbsp</a>
+    <a href="/gas">&nbsp Газ &nbsp</a>
+    <a href="/water">&nbsp Вода &nbsp</a>
+    <hr>
+    {% block body %}{% endblock %}
+</body>
+</html>

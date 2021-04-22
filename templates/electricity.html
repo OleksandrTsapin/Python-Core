@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>бандерхата</title>
+{% endblock %}
+
+{% block body %}
+<div class='content'>
+    <h1 style="text-align: center">Електроенергія</h1>
+    {% if tasks|length < 1 %}
+    <h4 style="text-align: center">Жодних показників! Вйо створити перший! :D</h4>
+    {% else %}
+    <table>
+        <tr>
+            <th>Дата обліку</th>
+            <th>Показники (кВт*год)</th>
+            <th>Дії</th>
+        </tr>
+        {% for task in tasks  %}
+            <tr>
+                <td>{{ task.date_created.date() }}</td>
+                <td>{{ task.content }}</td>
+                <td>
+                    <a href="/delete_elec/{{ task.id }}">Видалити</a>
+                    <br>
+                    <a href="/update_elec/{{ task.id }}">Редагувати</a>
+                </td>
+            </tr>
+        {% endfor  %}
+    </table>
+    {% endif  %}
+
+    <div class='form'>
+        <form action="/electricity" method="POST">
+            <input type="text" name="content" id="content" value="Твої показники (кВт*год)">
+            <input type="submit" value="Додати">
+        </form>
+    </div>  
+</div>
+{% endblock %}
